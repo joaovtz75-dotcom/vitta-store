@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vitta Store | Moda Masculina</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            VITTA<span>STORE</span>
+        </div>
+
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button id="searchButton" class="icon-button">
+                🔎
+            </button>
+
+            <button id="cartButton" class="cart-button">
+                🛒
+                <span id="cartCount">0</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- BARRA DE BUSCA -->
+    <div id="searchBox" class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Pesquisar roupas..."
+        >
+
+    </div>
+
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                NOVA COLEÇÃO 2026
+            </span>
+
+            <h1>
+                Seu estilo.
+                <br>
+                Sua identidade.
+            </h1>
+
+            <p>
+                Roupas modernas para quem gosta de se vestir bem
+                sem abrir mão da personalidade.
+            </p>
+
+            <a href="#produtos" class="hero-button">
+                Comprar agora
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+    <section class="categories">
+
+        <h2>Explore por categoria</h2>
+
+        <div class="category-buttons">
+
+            <button data-category="todos">
+                Todos
+            </button>
+
+            <button data-category="camisas">
+                Camisas
+            </button>
+
+            <button data-category="calcas">
+                Calças
+            </button>
+
+            <button data-category="bermudas">
+                Bermudas
+            </button>
+
+            <button data-category="acessorios">
+                Acessórios
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUTOS -->
+    <section id="produtos" class="products-section">
+
+        <div class="section-title">
+
+            <div>
+                <span>COLEÇÃO</span>
+                <h2>Mais vendidos</h2>
+            </div>
+
+            <select id="sortProducts">
+
+                <option value="default">
+                    Ordenar
+                </option>
+
+                <option value="lowest">
+                    Menor preço
+                </option>
+
+                <option value="highest">
+                    Maior preço
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div id="productsGrid" class="products-grid">
+
+            <!-- PRODUTOS INSERIDOS PELO JAVASCRIPT -->
+
+        </div>
+
+    </section>
+
+
+    <!-- BANNER -->
+    <section class="promo">
+
+        <div>
+
+            <span>
+                OFERTA ESPECIAL
+            </span>
+
+            <h2>
+                15% OFF na primeira compra
+            </h2>
+
+            <p>
+                Use o cupom:
+                <strong>VITTA15</strong>
+            </p>
+
+        </div>
+
+        <button onclick="scrollToProducts()">
+            Aproveitar
+        </button>
+
+    </section>
+
+
+    <!-- SOBRE -->
+    <section id="sobre" class="about">
+
+        <div>
+
+            <span>SOBRE A VITTA</span>
+
+            <h2>
+                Moda simples,
+                <br>
+                mas com presença.
+            </h2>
+
+        </div>
+
+        <p>
+            A Vitta Store nasceu para trazer roupas modernas,
+            confortáveis e versáteis para quem quer montar
+            um estilo próprio.
+        </p>
+
+    </section>
+
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+
+        <h2>
+            Receba novidades
+        </h2>
+
+        <p>
+            Cadastre seu e-mail para receber ofertas e lançamentos.
+        </p>
+
+        <form id="newsletterForm">
+
+            <input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                required
+            >
+
+            <button>
+                Cadastrar
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer id="contato">
+
+        <div class="footer-logo">
+            VITTA<span>STORE</span>
+        </div>
+
+        <p>
+            © 2026 Vitta Store. Todos os direitos reservados.
+        </p>
+
+        <div class="social">
+
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                TikTok
+            </a>
+
+            <a href="#">
+                WhatsApp
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- CARRINHO -->
+    <div id="cartOverlay" class="overlay"></div>
+
+    <aside id="cart" class="cart">
+
+        <div class="cart-header">
+
+            <h2>
+                Seu carrinho
+            </h2>
+
+            <button id="closeCart">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="cartItems" class="cart-items">
+
+            <p class="empty-cart">
+                Seu carrinho está vazio.
+            </p>
+
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+            <button
+                id="checkoutButton"
+                class="checkout"
+            >
+                Finalizar pelo WhatsApp
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MODAL PRODUTO -->
+    <div id="productModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeProductModal()"
+            >
+                ✕
+            </button>
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
+            <div class="modal-info">
+
+                <span id="modalCategory">
+                    Categoria
+                </span>
+
+                <h2 id="modalName">
+                    Produto
+                </h2>
+
+                <p id="modalDescription">
+                    Descrição
+                </p>
+
+                <strong id="modalPrice">
+                    R$ 0,00
+                </strong>
+
+                <div class="sizes">
+
+                    <span>Tamanho:</span>
+
+                    <button>
+                        P
+                    </button>
+
+                    <button class="selected">
+                        M
+                    </button>
+
+                    <button>
+                        G
+                    </button>
+
+                    <button>
+                        GG
+                    </button>
+
+                </div>
+
+                <button
+                    id="modalAdd"
+                    class="add-modal"
+                >
+                    Adicionar ao carrinho
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
